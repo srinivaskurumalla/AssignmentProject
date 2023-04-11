@@ -1,0 +1,33 @@
+<div mat-dialog-title>
+  <h1 class="page">Payment Form</h1>
+</div>
+<form [formGroup]="paymentForm" (ngSubmit)="paymentFormSubmit()">
+<div mat-dialog-content class="content">
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Course Name</mat-label>
+      <input matInput type="text" placeholder="Ex. Angular" formControlName="courseName"/>
+    </mat-form-field>
+
+
+  </div>
+
+
+
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input matInput placeholder="Ex. 5000" type="number" formControlName="amount"/>
+    </mat-form-field>
+
+
+  </div>
+  <div class="row">
+    <div mat-dialog-actions class="action">
+      <button mat-raised-button type="reset">Cancel</button>
+      <button mat-raised-button color="primary" type="submit">Pay</button>
+    </div>
+  </div>
+</div>
+
+</form>

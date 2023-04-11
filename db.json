@@ -1,0 +1,63 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "Name": "srinivas",
+      "email": "sri@gmail.com",
+      "phone": 9876543212,
+      "password": "12345",
+      "id": 1
+    },
+    {
+      "Name": "Rakesh",
+      "email": "rakesh@gmail.com",
+      "phone": 876543213,
+      "password": "123",
+      "id": 2
+    }
+  ],
+  "payments": [
+    {
+      "userName": "",
+      "userEmail": "",
+      "courseName": "cascs",
+      "amount": 2323,
+      "id": 1
+    },
+    {
+      "userName": "ABC",
+      "userEmail": "abc@gmail.com",
+      "courseName": "Angular",
+      "amount": 343434,
+      "id": 2
+    },
+    {
+      "courseName": "Java",
+      "amount": 2300,
+      "id": 3
+    },
+    {
+      "userName": "Rakesh",
+      "userEmail": "rakesh@gmail.com",
+      "courseName": "React",
+      "amount": 3555,
+      "id": 4
+    }
+  ]
+}

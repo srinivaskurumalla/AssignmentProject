@@ -1,0 +1,23 @@
+.content{
+  padding-top: 10px;
+  margin: 0px 600px 100px 600px;
+}
+.page{
+  margin: 200px 600px 0px 600px;
+}
+.row
+{
+  display: flex;
+  gap : 10px;
+
+  mat-form-field{
+    width: 100%;
+  }
+}
+
+.action{
+
+  button {
+    flex: 1;
+  }
+}
