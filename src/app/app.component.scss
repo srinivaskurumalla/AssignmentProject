@@ -1,0 +1,23 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.login{
+  margin-left: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+}
+.user-menu-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-menu-container p {
+  margin-right: 1rem;
+}

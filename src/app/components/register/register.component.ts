@@ -26,6 +26,9 @@ export class RegisterComponent {
       next: (val: any) => {
         alert('user registered successfully');
         this.router.navigate(['/login'])
+      },
+      error : (err : any) => {
+        alert(err.message)
       }
     })
   }

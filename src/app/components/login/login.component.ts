@@ -45,11 +45,19 @@ export class LoginComponent  implements OnInit{
       if (user.email === this.loginForm.value.email && user.password === this.loginForm.value.password) {
         alert('login successfull')
         this.authService.login(user);
-        this.router.navigate(['/payment']);
+       
+        localStorage.setItem('loggedInName', user['Name'])
+        if (user['Name'] === 'ADMIN') {
+          this.router.navigate(['/mainPage'])
+        }
+        else {
+          this.router.navigate(['/payment']);
+
+        }
         this.loginForm.reset(); // Reset the form after a successful login
 
 
-        
+
         return; // Exit the loop after a successful login
       }
 

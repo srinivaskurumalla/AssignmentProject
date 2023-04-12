@@ -30,22 +30,57 @@
       "phone": 876543213,
       "password": "123",
       "id": 2
+    },
+    {
+      "Name": "chandu",
+      "email": "chandu@gmail.com",
+      "phone": 876543213,
+      "password": "123",
+      "id": 3
+    },
+    {
+      "Name": "ADMIN",
+      "email": "ADMIN@gmail.com",
+      "phone": 9999999999,
+      "password": "ADMIN",
+      "id": 10
+    },
+    {
+      "Name": "srinivas",
+      "email": "srinivas@gmail.com",
+      "phone": 9876543213,
+      "password": "123",
+      "id": 11
     }
   ],
   "payments": [
     {
-      "userName": "Rakesh",
-      "userEmail": "rakesh@gmail.com",
-      "courseName": "React",
-      "amount": 3555,
-      "id": 4
+      "userName": "srinivas",
+      "userEmail": "sri@gmail.com",
+      "billName": "Electricity",
+      "amount": 1200,
+      "id": 1
     },
     {
       "userName": "srinivas",
       "userEmail": "sri@gmail.com",
-      "courseName": "Dot Net",
-      "amount": 10000,
+      "billName": "House Rent",
+      "amount": 25000,
+      "id": 4
+    },
+    {
+      "userName": "srinivas",
+      "userEmail": "srinivas@gmail.com",
+      "billName": "Water",
+      "amount": 500,
       "id": 5
+    },
+    {
+      "userName": "Rakesh",
+      "userEmail": "rakesh@gmail.com",
+      "billName": "House Rent",
+      "amount": 25000,
+      "id": 6
     }
   ]
 }

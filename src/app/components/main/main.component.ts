@@ -2,6 +2,7 @@ import { Component , OnInit, ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DbService } from 'src/app/services/db.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { LoginComponent } from '../login/login.component';
 
 import {MatPaginator} from '@angular/material/paginator';
@@ -14,15 +15,19 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class MainComponent implements OnInit{
 
-  displayedColumns: string[] = ['id', 'userName', 'userEmail', 'courseName', 'amount'];
+  displayedColumns: string[] = ['id', 'userName', 'userEmail', 'billName', 'amount'];
   dataSource!: MatTableDataSource<any>;
+
+  user: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor( private dbService: DbService,private router : Router) { }
+  constructor(private dbService: DbService, private router : Router,private authService : AuthService) { }
 
   ngOnInit(): void {
     this.getPaymentList();
+
+
   }
 
   RegisterForm() {
@@ -35,14 +40,30 @@ export class MainComponent implements OnInit{
   getPaymentList() {
     this.dbService.getAllPayments().subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
+
+        this.getCurrentUser();
+
+        console.log('user detaisl',this.user)
+        if (this.user['email'] === 'ADMIN@gmail.com') {
+
+
+          this.dataSource = new MatTableDataSource(res);
+        }
+        else {
+          const filteredRes = res.filter((val: any) => val.userEmail === this.user['email']);
+          this.dataSource = new MatTableDataSource(filteredRes);
+
+        }
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       }
     })
   }
 
+  getCurrentUser() {
+   this.user= this.authService.getCurrentUser();
 
+}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

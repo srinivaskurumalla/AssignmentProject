@@ -1,2 +1,28 @@
-<app-main></app-main>
+<mat-toolbar color="primary">
+  <span>CRUD App</span>
+  <span class="example-spacer"></span>
+
+  <div class="dropdown-container" [matMenuTriggerFor]="dropdownMenu">
+    <button *ngIf="!isLoggedIn()"mat-raised-button>Login</button>
+    <mat-menu #dropdownMenu="matMenu">
+      <div *ngIf="!isLoggedIn()">
+        <button class="nav-link" routerLink="/login" routerLinkActive="active" mat-menu-item>Login as User</button>
+        <button class="nav-link" routerLink="/login" routerLinkActive="active" mat-menu-item>Login as Admin</button>
+      </div>
+
+
+
+    </mat-menu>
+
+  </div>
+  <button *ngIf="!isLoggedIn()" mat-raised-button (click)="RegisterForm()" class="login">Register</button>
+  <div class="user-menu-container" *ngIf="isLoggedIn()">
+    <p routerLink="/payment" routerLinkActive="active">welcome  {{loggedInName}}</p>
+
+     <button mat-raised-button (click)="logout()">Logout</button>
+     <button  class="nav-link" routerLink="/mainPage" routerLinkActive="active" mat-menu-item>Your Payments</button>
+
+  </div>
+
+</mat-toolbar>
 <router-outlet></router-outlet>

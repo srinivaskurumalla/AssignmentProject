@@ -5,8 +5,12 @@
 <div mat-dialog-content class="content">
   <div class="row">
     <mat-form-field appearance="outline">
-      <mat-label>Course Name</mat-label>
-      <input matInput type="text" placeholder="Ex. Angular" formControlName="courseName"/>
+      <mat-label>Select Bill</mat-label>
+      <mat-select formControlName="billName">
+        <mat-option *ngFor="let bill of billNames" [value]="bill" >
+          {{bill}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
 
@@ -17,7 +21,7 @@
   <div class="row">
     <mat-form-field appearance="outline">
       <mat-label>Amount</mat-label>
-      <input matInput placeholder="Ex. 5000" type="number" formControlName="amount"/>
+      <input matInput placeholder="Ex. 5000" type="number" formControlName="amount" [value]="getSelectedBillAmount()"/>
     </mat-form-field>
 
 
