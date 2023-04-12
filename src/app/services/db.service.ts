@@ -20,4 +20,8 @@ export class DbService {
   savePayment(data: any): Observable<any>{
     return this._http.post('http://localhost:3000/payments', data);
   }
+
+  getAllPayments(): Observable<any>{
+    return this._http.get('http://localhost:3000/payments');
+  }
 }

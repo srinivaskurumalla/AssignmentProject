@@ -4,3 +4,19 @@
 .login{
   margin-left: 20px;
 }
+
+.main-body{
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 1248px;
+  mat-form-field {
+    width: 100%;
+  }
+
+}
+table{
+  th{
+    background-color: rgb(64, 128, 219);
+  }
+ 
+}

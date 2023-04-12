@@ -34,30 +34,18 @@
   ],
   "payments": [
     {
-      "userName": "",
-      "userEmail": "",
-      "courseName": "cascs",
-      "amount": 2323,
-      "id": 1
-    },
-    {
-      "userName": "ABC",
-      "userEmail": "abc@gmail.com",
-      "courseName": "Angular",
-      "amount": 343434,
-      "id": 2
-    },
-    {
-      "courseName": "Java",
-      "amount": 2300,
-      "id": 3
-    },
-    {
       "userName": "Rakesh",
       "userEmail": "rakesh@gmail.com",
       "courseName": "React",
       "amount": 3555,
       "id": 4
+    },
+    {
+      "userName": "srinivas",
+      "userEmail": "sri@gmail.com",
+      "courseName": "Dot Net",
+      "amount": 10000,
+      "id": 5
     }
   ]
 }
