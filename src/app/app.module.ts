@@ -28,6 +28,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
 import { MatMenuModule } from '@angular/material/menu';
+import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,10 @@ import { MatMenuModule } from '@angular/material/menu';
     MatPaginatorModule,
     MatSortModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule,
+
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

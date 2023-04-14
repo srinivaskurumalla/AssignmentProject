@@ -64,7 +64,13 @@ export class DbService implements OnInit{
   savePayment(data: any): Observable<any>{
     return this._http.post('http://localhost:3000/payments', data);
   }
+  updatePayment(id : number ,data: any): Observable<any>{
+    return this._http.put(`http://localhost:3000/payments/${id}`, data);
+  }
 
+  getPaymentById(id: number): Observable<any> {
+    return this._http.get(`http://localhost:3000/payments/${id}`);
+}
   getAllPayments(): Observable<any>{
     return this._http.get('http://localhost:3000/payments');
   }

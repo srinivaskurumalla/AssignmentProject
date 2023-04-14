@@ -57,30 +57,26 @@
     {
       "userName": "srinivas",
       "userEmail": "sri@gmail.com",
-      "billName": "Electricity",
-      "amount": 1200,
-      "id": 1
+      "billName": "Water",
+      "amount": 500,
+      "status": "REJECTED",
+      "id": 3
     },
     {
       "userName": "srinivas",
       "userEmail": "sri@gmail.com",
       "billName": "House Rent",
       "amount": 25000,
+      "status": "ACCEPTED",
       "id": 4
-    },
-    {
-      "userName": "srinivas",
-      "userEmail": "srinivas@gmail.com",
-      "billName": "Water",
-      "amount": 500,
-      "id": 5
     },
     {
       "userName": "Rakesh",
       "userEmail": "rakesh@gmail.com",
-      "billName": "House Rent",
-      "amount": 25000,
-      "id": 6
+      "billName": "Water",
+      "amount": 500,
+      "status": "ACCEPTED",
+      "id": 5
     }
   ]
 }

@@ -2,6 +2,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CoreService } from 'src/app/core/core.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { DbService } from 'src/app/services/db.service';
 
@@ -15,7 +16,11 @@ export class LoginComponent  implements OnInit{
   loginForm: FormGroup;
   users: any[] = [];
 
-  constructor(private _fb : FormBuilder,private router : Router,private dbService : DbService,private authService : AuthService) {
+  constructor(private _fb: FormBuilder,
+    private router: Router,
+    private dbService: DbService,
+    private authService: AuthService,
+    private _coreService : CoreService) {
     this.loginForm = _fb.group({
       Name: '',
       email: '',
@@ -43,10 +48,11 @@ export class LoginComponent  implements OnInit{
 
     for (let user of this.users) {
       if (user.email === this.loginForm.value.email && user.password === this.loginForm.value.password) {
-        alert('login successfull')
+        this._coreService.openSnackBar('Login Successful')
         this.authService.login(user);
-       
+
         localStorage.setItem('loggedInName', user['Name'])
+        localStorage.setItem('loggedInEmail', user['email'])
         if (user['Name'] === 'ADMIN') {
           this.router.navigate(['/mainPage'])
         }
@@ -62,7 +68,7 @@ export class LoginComponent  implements OnInit{
       }
 
     }
-    alert('login failed');
+    this._coreService.openSnackBar('Login Failed, Please enter correct Credentials')
     this.loginForm.reset(); // Reset the form after a failed login
     this.router.navigate(['/login']);
 

@@ -8,6 +8,7 @@ import { LoginComponent } from '../login/login.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { CoreService } from 'src/app/core/core.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -15,19 +16,34 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class MainComponent implements OnInit{
 
-  displayedColumns: string[] = ['id', 'userName', 'userEmail', 'billName', 'amount'];
+
+  displayedColumns: string[] = ['id', 'userName', 'userEmail', 'billName', 'amount', 'status'];
+  showActionsColumn: boolean = false;
+
+
+ // displayedColumns: string[] = ['id', 'userName', 'userEmail', 'billName', 'amount','status','Action'];
   dataSource!: MatTableDataSource<any>;
 
   user: any;
+  currentPayment: any;
+  loggedInEmail = localStorage.getItem('loggedInEmail');
+  hasAction: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private dbService: DbService, private router : Router,private authService : AuthService) { }
+  constructor(private dbService: DbService,
+    private router: Router,
+    private authService: AuthService,
+  private _coreService : CoreService) { }
 
   ngOnInit(): void {
     this.getPaymentList();
-
-
+    this.hasAction = this.loggedInEmail === 'ADMIN@gmail.com';
+    //this.loggedInEmail = localStorage.getItem('loggedInEmail');
+    if (this.hasAction) {
+      this.displayedColumns.push('action');
+    }
+    console.log(this.displayedColumns)
   }
 
   RegisterForm() {
@@ -43,7 +59,7 @@ export class MainComponent implements OnInit{
 
         this.getCurrentUser();
 
-        console.log('user detaisl',this.user)
+        console.log('user details',this.user)
         if (this.user['email'] === 'ADMIN@gmail.com') {
 
 
@@ -71,6 +87,32 @@ export class MainComponent implements OnInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  UpdatePaymentStatus(id: number, code : number) {
+    this.dbService.getPaymentById(id).subscribe({
+      next: (val) => {
+        this.currentPayment = val;
+        if (code == 1) {
+
+
+          this.currentPayment.status = 'REJECTED';
+        }
+        else {
+          this.currentPayment.status = 'ACCEPTED';
+        }
+
+        this.dbService.updatePayment(id, this.currentPayment).subscribe({
+          next: (val: any) => {
+            this.getPaymentList();
+            this._coreService.openSnackBar('Status Updated')
+
+          },
+          error: console.log
+        });
+      },
+      error: console.log
+    })
   }
 
 

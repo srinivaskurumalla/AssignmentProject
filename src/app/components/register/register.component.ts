@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CoreService } from 'src/app/core/core.service';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -11,7 +12,10 @@ import { DbService } from 'src/app/services/db.service';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private _fb : FormBuilder,private router : Router,private dbService : DbService) {
+  constructor(private _fb: FormBuilder,
+    private router: Router,
+    private dbService: DbService,
+    private _coreService : CoreService) {
     this.registerForm = _fb.group({
       Name: '',
       email: '',
@@ -24,7 +28,7 @@ export class RegisterComponent {
     console.log(this.registerForm.value);
     this.dbService.register(this.registerForm.value).subscribe({
       next: (val: any) => {
-        alert('user registered successfully');
+        this._coreService.openSnackBar('Registered Successfully!')
         this.router.navigate(['/login'])
       },
       error : (err : any) => {

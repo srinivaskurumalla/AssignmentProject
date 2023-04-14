@@ -19,6 +19,7 @@ export class AuthService {
   logout() {
     // clear the user details
     localStorage.removeItem('loggedInName');
+    localStorage.removeItem('loggedInEmail');
     this.currentUser = null;
 
   }
